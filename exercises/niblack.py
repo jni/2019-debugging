@@ -6,6 +6,9 @@ from skimage.transform import integral_image
 from skimage.util import crop
 
 
+np.warnings.filterwarnings('ignore')
+
+
 def _validate_window_size(axis_sizes):
     """Ensure all sizes in ``axis_sizes`` are odd.
 

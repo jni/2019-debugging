@@ -5,8 +5,6 @@
 import numpy as np
 from niblack import threshold_niblack
 
-# 16 pixels, single channel
-src = np.array([0.03082192 + 2.19178082e-09] * 16).astype('float64')
-image = src.reshape((4,4))
+image = np.full((4, 4), 0.03082192 + 2.19178082e-09)
 
 print(threshold_niblack(image))
