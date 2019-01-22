@@ -3,7 +3,7 @@
 # it's possible to get back a mix of NaN and float values
 
 import numpy as np
-from niblack import threshold_niblack
+from modules.niblack import threshold_niblack
 
 
 image1 = np.zeros((5, 5))
