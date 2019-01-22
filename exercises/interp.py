@@ -11,6 +11,6 @@ def scale_and_uint8(image, factor):
     """
     coords = np.meshgrid(*(np.linspace(0, i, i * factor, endpoint=False)
                            for i in image.shape), indexing='ij')
-    interpolated = ndi.map_coordinates(image, coords)
+    interpolated = ndi.map_coordinates(image, coords, mode='reflect')
     output = img_as_ubyte(interpolated)
     return output
