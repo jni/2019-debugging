@@ -74,13 +74,11 @@ def _mean_std(image, w):
 
     total_window_size = np.prod(w)
     sum_full = ndi.correlate(integral, kern, mode='constant')
-    m = crop(sum_full, pad_width) / total_window_size
+    mean = crop(sum_full, pad_width) / total_window_size
     sum_sq_full = ndi.correlate(integral_sq, kern, mode='constant')
-    g2 = crop(sum_sq_full, pad_width) / total_window_size
-    # Note: we use np.clip because g2 is not guaranteed to be greater than
-    # m*m when floating point error is considered
-    s = np.sqrt(np.clip(g2 - m * m, 0, None))
-    return m, s
+    ex2 = crop(sum_sq_full, pad_width) / total_window_size
+    stdev = np.sqrt(ex2 - mean**2)
+    return mean, stdev
 
 
 def threshold_niblack(image, window_size=15, k=0.2):
